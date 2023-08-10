@@ -16,6 +16,8 @@ const useData = <T>(endpoint: string) => {
     const controller = new AbortController();
 
     setLoading(true);
+    setError("");
+    setData([]);
     apiClient
       .get<FetchResponse<T>>(endpoint, { signal: controller.signal })
       .then((res) => {
